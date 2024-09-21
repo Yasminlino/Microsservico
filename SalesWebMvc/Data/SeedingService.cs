@@ -22,11 +22,11 @@ public class SeedingService
         }
 
         // Criação de dados
-        Department d1 = new Department {Name = "Computers" };
-        Department d2 = new Department {Name = "Electronics" };
-        Department d3 = new Department {Name = "Fashion" };
-        Department d4 = new Department {Name = "Books" };
-        Department d5 = new Department {Name = "Electronics" };
+        Department d1 = new Department {Id = 1, Name = "Computers" };
+        Department d2 = new Department {Id = 2, Name = "Electronics" };
+        Department d3 = new Department {Id = 3, Name = "Fashion" };
+        Department d4 = new Department {Id = 4, Name = "Books" };
+        Department d5 = new Department {Id = 5, Name = "Electronics" };
 
         Seller s1 = new Seller { Id = 1, Name = "Bob Brown", Email = "bob@gmail.com", BirthDate = new DateTime(1998, 4, 21), BaseSalary = 1000.0, Department = d1 };
         Seller s2 = new Seller { Id = 2, Name = "Ana", Email = "ana@gmail.com", BirthDate = new DateTime(1998, 6, 10), BaseSalary = 1000.0, Department = d2 };

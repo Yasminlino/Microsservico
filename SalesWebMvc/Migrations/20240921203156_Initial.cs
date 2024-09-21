@@ -7,11 +7,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SalesWebMvc.Migrations
 {
     /// <inheritdoc />
-    public partial class OtherEntities : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Department",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Department", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateTable(
                 name: "Seller",
                 columns: table => new
@@ -24,7 +42,7 @@ namespace SalesWebMvc.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     BaseSalary = table.Column<double>(type: "double", nullable: false),
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
+                    DepartmentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -33,8 +51,7 @@ namespace SalesWebMvc.Migrations
                         name: "FK_Seller_Department_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Department",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -80,6 +97,9 @@ namespace SalesWebMvc.Migrations
 
             migrationBuilder.DropTable(
                 name: "Seller");
+
+            migrationBuilder.DropTable(
+                name: "Department");
         }
     }
 }

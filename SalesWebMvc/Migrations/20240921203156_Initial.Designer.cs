@@ -12,8 +12,8 @@ using SalesWebMvc.Data;
 namespace SalesWebMvc.Migrations
 {
     [DbContext(typeof(SalesWebMvcContext))]
-    [Migration("20240919142247_OtherEntities")]
-    partial class OtherEntities
+    [Migration("20240921203156_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,7 +84,7 @@ namespace SalesWebMvc.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -117,9 +117,7 @@ namespace SalesWebMvc.Migrations
                 {
                     b.HasOne("SalesWebMvc.Models.Department", "Department")
                         .WithMany("Sellers")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.Navigation("Department");
                 });

@@ -10,8 +10,10 @@ namespace SalesWebMvc.Models
         public SaleStatus Status { get; set; }
         public Seller Seller{ get; set; }
 
-        public SalesRecord()
-        {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+		public SalesRecord()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+		{
         }
 
         public SalesRecord(int id, DateTime date, double amount, SaleStatus status, Seller seller)
