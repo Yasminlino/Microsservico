@@ -1,6 +1,6 @@
 ﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel;
 @{
-	ViewData["Title"] = "Create";	
+	ViewData["Title"] = "Edit";	
 }
 <h2>@ViewData["Title"]</h2>
 
@@ -8,8 +8,8 @@
 <hr />
 <div class="row	">
 	<div class="col-4">
-		<form asp-action="Create">
-            <input type="hidden" asp-for="Seller.Id"/>
+		<form asp-action="Edit">
+            <input type="hidden" asp-for="Seller.Id" />
 			<div class="form">
 				<label asp-for="Seller.Name" class="col-form-label">Name</label>
 				<input asp-for="Seller.Name" class="form-control" />
@@ -31,7 +31,7 @@
 				<select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control"></select>
 			</div>
 			<div class="table-group-divider">
-				<input type="submit" value="Create" class="btn-danger" />
+				<input type="submit" value="Save" class="btn-danger" />
 			</div>
 		</form>
 	</div>
